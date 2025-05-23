@@ -1,0 +1,8 @@
+Use min heap for largest and vice versa
+priority_queue<int, vector<int>, greater<int>> minh;
+
+for loop-push;
+if size>k pop;
+
+return top el
+for pair and other exp- noteboook
