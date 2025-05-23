@@ -1,0 +1,11 @@
+Use hashing a left pointer and right pointer
+Check while right< size of window
+create hash array all initialized to -1
+if hash array is not -1 means that array is in hash
+if hash[s[r]]>=l meaning repeating character
+l= hash[s[r]] +1
+otherwise
+length= r-l+1
+maxlen= max of maxlen and length
+hash[s[r]]=r
+r++
