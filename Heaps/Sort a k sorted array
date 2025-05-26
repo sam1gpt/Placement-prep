@@ -1,0 +1,5 @@
+basically implement a min heap to get smallest element every time 
+store minh.top and then pop it out
+for remaining largest elem create a while loop
+such that until mminh is empty that is !minh.empty
+u store top and then pop
