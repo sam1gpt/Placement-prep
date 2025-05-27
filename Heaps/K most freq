@@ -1,0 +1,5 @@
+create a map to store freq 
+make pair and as most freq is asked create min heap so that min freq get popped out abd most remain in heap
+we store pair with map second value 1st as we want k most freq
+when size>k pop
+remaining create a vector and until heap is empty store value of top and then pop
