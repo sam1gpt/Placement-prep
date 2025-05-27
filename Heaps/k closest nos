@@ -1,0 +1,54 @@
+create a maxh heap pairwise storing diff and no
+
+normal ques :
+3 4 5 6 7 closest to 5
+subtract arr values by 5 && store abs val
+2 1 0 1 2 closest 3 are if k is 3 are 4 5 6
+ maxh will remove when abs value are 2
+
+while maxh isnt empty store it in a result vector and output it
+--- 
+if there is variation that number itself shouldnt be there and if diff of 2 nos is same greater val is required
+then store diff and negative of arr[i] such that max heap mae it remains a lower no
+then put the result as neg of that second element pushed and in the end reverse it such that greater elem comes first
+
+🔧 Input:
+arr = {6, 4, 5, 9, 10}
+x = 7
+k = 3
+📊 Step-by-step:
+Index	arr[i]	abs(arr[i] - x)	-arr[i]	Heap after insertion
+0	6	1	-6	{(1, -6)}
+1	4	3	-4	{(3, -4), (1, -6)}
+2	5	2	-5	{(3, -4), (1, -6), (2, -5)}
+3	9	2	-9	Pop (3, -4) → Heap becomes:
+{(2, -5), (1, -6), (2, -9)}
+4	10	3	-10	Pop (3, -10) (since heap has more than 3)
+Heap becomes: {(2, -5), (1, -6), (2, -9)} (no pop needed, it stays full)
+🧠 Final Heap Elements:
+abs diff	value
+2	5
+2	9
+1	6
+Remember: the values are stored as negative in the pair's second field to reverse order for ties.
+
+So internally the heap looks like:
+
+{(2, -5), (2, -9), (1, -6)}
+Max-heap pops the largest pair based on:
+
+First: highest absolute difference
+Second: lowest actual value (because we negated it)
+Now we pop from heap into result:
+
+Pop → (2, -5) → Push 5
+Pop → (2, -9) → Push 9
+Pop → (1, -6) → Push 6
+Result: res = {5, 9, 6}
+Then reverse(res) → {6, 9, 5}
+
+✅ Final Answer:
+[6, 9, 5]
+
+
+
