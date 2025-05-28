@@ -1,0 +1,8 @@
+similar to rotten orange, here sr and sc provided & no min time so use dfs, can use bfs too
+
+we need to provide new color to all adjacent starting with initial color of image[sr][sc] and return ans matrix
+same see the neighbours, use drow,dcol return ans matrix
+
+initial ans[row][col] in dfs starting with new color
+run for loop check boundary conditions and if image[nrow][ncol]= initial color and ans[nrow][ncol]!= new color
+then run dfs for nrow and ncol // recursion
