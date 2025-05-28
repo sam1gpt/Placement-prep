@@ -1,0 +1,16 @@
+adj matrix is given convert to list
+run for loop for matrix id matrix[i][j]==1 and i is not equal to j means there is path  // if i==j self path
+create adj list
+create a visited array init to 0
+run for loop over the nodes 
+if not visted , increase cnt- as new component & run dfs over the adj list
+
+in dfs 
+first mark vis[node] as 1
+for(auto it: adj[node])
+if not visited 
+dfs(it, adj, vis)-- recursion solves it
+
+
+as cnt only increases when new component node is seen and dfs recursion solves it internally
+retun cnt for ans
