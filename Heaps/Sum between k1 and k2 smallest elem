@@ -1,0 +1,8 @@
+create 2 heaps
+if ones size is greater than k1 then pop from heap1 // same for heap 2
+
+the top elem of 1st heap will have k1 smallest and 2nd will have k2 smallest
+
+store them in 2 var n1 and n2
+
+iterate over array if lem is greater than n1 and smaller than n2 store the sum by init sum var
