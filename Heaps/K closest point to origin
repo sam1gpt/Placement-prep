@@ -1,0 +1,9 @@
+we want closest point to origin meaning min distance in heap hence create max heap to pop out ones with largest dist
+
+create max heap with {{dist, pait<int,int>}} having element
+
+calculate dist= square of 1st element + 2nd one , mx will get popped out when size>k
+
+while heap isnt empty
+push elements in res vector
+and pop element out
