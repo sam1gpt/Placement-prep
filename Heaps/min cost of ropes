@@ -1,0 +1,13 @@
+basically create min heap to get 2 smallest elem each time, add them and then push them back so that next 2 smallest can come added and pushed back and so on 
+so that we get smallest cost
+
+push all elem into minh
+
+check while size>=2 // while loop
+get top elem and pop // mark this as first
+get next top elem and pop // mark  this as 2nd
+
+store a total cost var= total+ first +second
+
+push back first+ second back into min heap
+
