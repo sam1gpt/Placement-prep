@@ -1,0 +1,72 @@
+basically we use bfs as want min time
+we create a queue
+{{r,c}, time}
+
+we run a for loop over the grid
+when we encounter our first rotten we push it into the queue as q.push({{i,j}, 0} as time starts from 0
+and mark visited matrix for it as 2, here we create a vis matrix instead of array
+
+as when we encounter a rotten we can move up, down, left or right, we create the drow and dcol so that when we iterate over the 4 directions we can just do 
+ neighbouring row= row+drow[i] // dir can be -1,0,1,0 and same for col
+to get r, we do q.front.first.first as we have pair of pairs for row,col and time
+                                                                       
+we check that if neighbour are within boundary that is nrow>=0 && <n and same for col and if they are not rotten or empty meaning that grid[nrow][ncol]==1 and vis !=2
+  we push q.push({{nrow,ncol}, t+1}) and mark vis=2
+
+for max time= we do max(t,time)  and this all is done until q is empty // run while loop
+
+now we check if any elem is not visited and if grid is equal to 1 then return -1 // possible if neigbours are 0
+
+  return max time
+
+check code: 
+  class Solution {
+public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        int n= grid.size();
+        int m= grid[0].size();
+        vector<vector<int>> vis(n, vector<int>(m, 0));
+
+
+        // {{r,c}, t}
+        queue<pair <pair<int,int>, int>> q;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]==2){
+                    q.push({{i,j},0});
+                    vis[i][j]=2;
+                }
+            }
+        }
+        int tm=0;
+        int drow[]= {-1,0,1,0};
+        int dcol[]={0,1,0,-1};
+        while(!q.empty()){
+            int r= q.front().first.first;
+            int c= q.front().first.second;
+            int t= q.front().second;
+            tm= max(tm,t);
+            q.pop();
+            for(int i=0;i<4;i++){
+                int nrow= r+drow[i];
+                int ncol= c+dcol[i];
+                if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && 
+                grid[nrow][ncol]==1 && vis[nrow][ncol]!=2){
+                    q.push({{nrow,ncol}, t+1});
+                    vis[nrow][ncol]=2;
+                }
+            }
+            
+            
+        }
+        for(int i=0;i<n;i++){
+                for(int j=0;j<m;j++){
+                    if(vis[i][j]!=2 && grid[i][j]==1){
+                        return -1;
+                    }
+                }
+        }
+        return tm;
+    }
+};
+                                                                       
