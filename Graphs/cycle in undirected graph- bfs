@@ -1,0 +1,9 @@
+use bfs
+make queue with pairs to store node and parent
+pop them and then find for adjacent nodes
+if not visited visit them mark them as 1 and push adjacentNode as node and the initial node as parent in queue
+if visited if the parent is not adjacent node means there is cycle and return true else false
+
+in main function make adjustments list if matrix given
+as its possible components might be given so is not visited call the uper func and return true
+else false
