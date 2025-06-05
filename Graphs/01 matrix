@@ -1,0 +1,4 @@
+use bfs- from check for nearest 1 or inverse
+keep dist matrix and vis one
+same concept of del row and del col and q and check of neighburing row and col
+dist[nrow][ncol]= dist[row][col]+1
