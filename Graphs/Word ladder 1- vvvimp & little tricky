@@ -1,0 +1,43 @@
+we have start word and end word and a word listwe can change 1 letter each time such that modified word is in word list, we have to get min no of steps to get to end word which will be in word list, else we return 0
+we use bfs as level wise steps and queue pair with string and steps cnt as int
+we have set such that we remove every time we reach a modified word. also we may have multiple words reaching endwords at same step, using q and removing one's done helps in removing repititive steps and optimizing as we wont use the same word once used again
+
+we first push startword and steps cnt as 1, also declare unordered set and q beforre that
+we erase start word from set
+
+while q isnt empty
+we find word and steps and pop them, if word is equal to endword then return steps
+then for that particular word we first mark it as original, then iterate for 26 characters by running for loop and for all word[i]=ch
+if set finds word in wordlist then
+we push word and increase steps cnt, also erase word from set
+
+else return 0, meaning no way to reach endword or it isnt in list
+
+code:
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        queue<pair<string,int>> q;
+        unordered_set<string> st(wordList.begin(), wordList.end());
+        q.push({beginWord,1});
+        st.erase(beginWord);
+        while(!q.empty()){
+            string word= q.front().first;
+            int steps= q.front().second;
+            q.pop();
+            if(word== endWord) return steps;
+            for(int i=0;i<word.size();i++){
+                char original= word[i];
+                for(char ch='a'; ch<='z';ch++){
+                    word[i]=ch;
+                    if(st.find(word)!= st.end()){
+                        q.push({word, steps+1});
+                        st.erase(word);
+                    }
+                }
+                word[i]= original;
+            }
+        }
+        return 0;
+    }
+};
