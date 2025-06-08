@@ -1,0 +1,60 @@
+basically if there are O in edges we have to travers and let them remain O and rest which are not at edge and are O we have to turn them into X
+use dfs
+we check and traverse through first row, last row, first column and last column if not visited and have O we use dfs
+in the end we traverse through matrix if not visited and have O turn them into X
+
+in dfs func
+we mark row and col as visited
+we check for neighbouring row and col cond, if they are not visited and have O and use dfs for nrow ncol
+
+code:
+class Solution {
+public:
+    void dfs(int row, int col, int delrow[], int delcol[], vector<vector<char>> &board, vector<vector<int>> &vis){
+        vis[row][col]=1;
+        int m= board.size();
+        int n= board[0].size();
+        for(int i=0;i<4;i++){
+            int nrow= row+ delrow[i];
+            int ncol= col+ delcol[i];
+            if(nrow>=0 && nrow<m && ncol>=0 && ncol<n && !vis[nrow][ncol] && board[nrow][ncol]=='O'){
+                dfs(nrow, ncol, delrow, delcol, board, vis);
+            }
+        }
+    }
+    void solve(vector<vector<char>>& board) {
+        int m= board.size();
+        int n= board[0].size();
+        vector<vector<int>> vis(m, vector<int>(n,0));
+        int delrow[]={-1,0,1,0};
+        int delcol[]={0,1,0,-1};
+        // first and last row
+        for(int j=0;j<n;j++){
+            if(!vis[0][j] && board[0][j]=='O'){
+                dfs(0,j,delrow, delcol, board, vis);
+            }
+             if(!vis[m-1][j] && board[m-1][j]=='O'){
+                dfs(m-1,j,delrow, delcol, board, vis);
+            }
+        }
+
+        // first and last col
+        for(int j=0;j<m;j++){
+            if(!vis[j][0] && board[j][0]=='O'){
+                dfs(j,0,delrow, delcol, board, vis);
+            }
+             if(!vis[j][n-1] && board[j][n-1]=='O'){
+                dfs(j, n-1,delrow, delcol, board, vis);
+            }
+        }
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(!vis[i][j] && board[i][j]=='O'){
+                    board[i][j]='X';
+                }
+            }
+        }
+        
+
+    }
+};
