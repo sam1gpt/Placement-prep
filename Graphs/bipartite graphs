@@ -1,0 +1,26 @@
+use bfs or dfs concept is use a color array init to -1 and 0/1 as alternate color
+if 2 adj have same then not bipartite
+
+bfs
+take queue
+push start node mark color for that node as 0 and push it in q
+while not empty
+pop node 
+check for adjacent if color is -1, then turn it as !color[node] and push adjacent node in q
+but if color[it]==color[node] then return false els etrue
+
+dfs
+init colour array to -1 and have prev color as prev variable 
+run for loop if color[i]=-1
+run dfs for node, prevcolor-starting color as 0 
+if returns false then false else true
+
+in dfs
+first color[node]= prev
+for auto it:adj[node]
+if color it=-1
+then if dfs of it and !prev == false return false
+
+else if color[it]==color[node] return false
+
+else true
