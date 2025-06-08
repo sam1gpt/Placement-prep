@@ -1,0 +1,68 @@
+here mainly we will be given a grid if the 1s are identical in 2 different places we will only consider 1, if rotated or different then distinct and we have to return cnt of islands
+we mainly use dfs and base coordinated subtraction
+
+if 0,0-0,1 are same as 2,3-2,4  // grid val at them are 1
+then 0,0-0,0 and 0,1-0,0
+also 2,3-2,3 and 2,4-2,3
+means they are same and counted as 1 only not 2
+
+so we use set ds storing vector of int pairs for rows and cols for different pairs same pairs will only be counted once
+
+we traverse if not visited and grid val=1 
+then dfs for that row, col also base row and col put along with visited matrix and vector vec storing int pairs
+we insert vec into set
+
+in dfs we visit row,col as 1
+then we push into vec row-row0 and same for col // row0,col0 are base roes and cols
+we do dfs for neighbouring rows and cols using delrow,delcol method
+
+in main function we return set size
+
+code:
+// User function Template for C++
+
+class Solution {
+private:
+     void dfs(int row, int col, vector<vector<int>> &vis, 
+    vector<vector<int>> &grid, int row0, int col0, 
+     vector<pair<int,int>> &vec){
+         vis[row][col]=1;
+         vec.push_back({row-row0, col-col0});
+        int n= grid.size();
+        int m= grid[0].size();
+         int delrow[]= {-1,0,1,0};
+         int delcol[]={0,1,0,-1};
+         for(int i=0;i<4;i++){
+             int nrow= row+delrow[i];
+             int ncol= col+delcol[i];
+             if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && 
+             !vis[nrow][ncol] && grid[nrow][ncol]==1){
+                 dfs(nrow, ncol, vis, grid, row0, col0, vec);
+             }
+         }
+     }
+  public:
+   
+    int countDistinctIslands(vector<vector<int>>& grid) {
+        // code here
+        int n= grid.size();
+        int m= grid[0].size();
+        vector<vector<int>> vis(n, vector<int>(m,0));
+        set<vector<pair<int,int>>> st;
+       
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(!vis[i][j] && grid[i][j]==1){
+                     vector<pair<int,int>> vec;
+                    
+                    dfs(i,j,vis,grid,i,j,vec);
+                     st.insert(vec);
+                    
+                }
+            }
+        }
+        return st.size();
+        
+    }
+};
+
