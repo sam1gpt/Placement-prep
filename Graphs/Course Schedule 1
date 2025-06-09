@@ -1,0 +1,11 @@
+run kahns algo with bfs and cnt var to check if cnt== numCourses if thats true means there is no cycle because of topo sort
+small modification when checking indegree and we have to initiallize indegree based on prerequisites just
+
+        for(auto edge: prerequisites){
+            int u= edge[0];
+            int v= edge[1];
+            adj[v].push_back(u);
+            indegree[u]++;
+        }
+
+edge[1]->edge[0] in adj list, meaning indegree increase  will be at u so indegree[u]++
