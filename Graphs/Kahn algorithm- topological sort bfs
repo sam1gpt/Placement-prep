@@ -1,0 +1,14 @@
+we basically do bfs and indegree array
+we run a for loop throughout the vertices and run a for loop in it for all adjacent nodes 
+like for(int i=0;i<V;i++){
+for(auto it: adj[node]){
+indegree[it]++}}
+
+we then run a for loop again and see whose indegree is 0 from start and push it into queue
+we store final result in topo vector
+while q isnt empty
+we take node as q's front, pop it, push it into topo vector and check for all iteration in adj node // for auto it:adj[node]
+we reduce indegre[it]-- and if indegree is 0 we push ,it into q
+
+basically of indegree is 0 we push into q, when we check for adjacent and reduce it each time checked and reduce its indegree
+finally when its 0, push it into q, gives us desired topo sort
