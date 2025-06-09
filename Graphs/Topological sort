@@ -1,0 +1,10 @@
+use stack and dfs
+concept is for dag
+stack is lifo and using dfs it maintains order in whilch we want sort
+check if not visited run dfs
+
+in dfs check for adj node , mark visited first and push node in stack
+
+in main
+while stack isnt empty push top el in ans vector and pop it
+we get are desired sort
