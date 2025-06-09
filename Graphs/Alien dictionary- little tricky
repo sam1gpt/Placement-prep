@@ -1,0 +1,17 @@
+used kahns algo
+check strings pairwise, find min len between those 2 pairs
+and iterate my keeping ptr on both strings if they are unequal then 
+put it into an adjacency list
+adj[s1[ptr]-'a'].push_back(s2[ptr]-'a']; // to conert to numeric
+and break from loops
+
+call a topo vector and put in topo sort function having its algo
+declare ans string 
+iterate over topo vector
+and do ans= ans+ char(it+'a') //to convert back to string
+return ans
+
+edge case conditions
+in topo function check for cycle condition do topo.size< number of vertices or something
+also if all characters are same put it in else if of s1!=s2 condition and 
+return empty in both conditions
