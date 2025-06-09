@@ -1,0 +1,10 @@
+run dfs only but with pathvisited array and visited one
+mark pathvisited and visited as 1
+  check dfs if it return true for adj node
+  else if check for pathvisited[adjnode] if it return true
+  mark pathvis as 0
+  return false
+
+  concept is that if both pathvis and vis are 1 means there is cycle
+  every iteration when we mark pathvis as 0, and if vis is 1 means no cycle 
+  that is we check till end of that dfs and if no more we backtrack marking all pathvis marked 1 before as 0, but if in that iteration itself both vis and pathvis 1 means cycle
