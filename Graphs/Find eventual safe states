@@ -1,0 +1,2 @@
+use kahns algorithm but with concept of outdegree instead of indegree
+when traversing initially for adj node, just reverse directions of the org graph
