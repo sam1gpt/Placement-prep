@@ -1,0 +1,9 @@
+use bfs along with distance array concept
+mark dist array init as 1e9 // we mark as max initially as want min dist
+have q push src as well as init dist src as 0
+do bfs using q
+main logic is if that dist[node]+1 < dist[it] means it is shorter way to reach that node
+then dist[it]= dist[node]+1 and push it in q
+
+if dist array is still marked 1e9 means there is cycle then do dist[i]=1e9
+return dist
