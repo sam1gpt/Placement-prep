@@ -1,0 +1,68 @@
+we will be given adjacent nodes, and edge weight // like edge[i][1] & edge[i][2]
+create pair of adjacency list storing them
+we have to return distance vector storing the shortest path from src to all other nodes
+use dfs and stack method for topo sort
+do topo sort on 1st element of pair, meaning not the weight obviously
+store distance vector with large no initialized for every element, as we find min we init everything to max common logic
+while stack isnt empty
+we pop elem
+for adj node check if dist[node] + weight< dist[v] initially stored // that is max dist stored
+in end its possible there might be a cycle and that is only possible when dist is at max as thats the only value when its not a DAG, that is topo sort isnt possible for it
+make the max distance  remaing to -1
+return dist vector
+
+code:
+// User function Template for C++
+class Solution {
+    void topo(int node, vector<vector<pair<int,int>>> &adj, stack<int> &st, vector<int> &vis){
+        vis[node]=1;
+        for(auto it:adj[node]){
+            int v= it.first;
+            if(!vis[v]){
+                topo(v, adj, st, vis);
+            }
+        }
+        st.push(node);
+    }
+  public:
+    vector<int> shortestPath(int V, int E, vector<vector<int>>& edges) {
+        // code here
+        vector<vector<pair<int,int>>> adj(V);
+        for(int i=0;i<E;i++){
+            int u= edges[i][0];
+            int v= edges[i][1];
+            int wt= edges[i][2];
+            adj[u].push_back({v,wt});
+        }
+        vector<int> vis(V,0);
+        stack<int> st;
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                topo(i, adj, st, vis);
+            }
+        }
+        
+        vector<int> dist(V);
+        for(int i=0;i<V;i++){
+            dist[i]= 1e3;
+        }
+        dist[0]=0;
+        while(!st.empty()){
+            int node= st.top();
+            st.pop();
+            for(auto it: adj[node]){
+                int v= it.first;
+                int wt= it.second;
+                if(dist[node]+wt< dist[v]){
+                    dist[v]= dist[node]+wt;
+                }
+            }
+        }
+         for(int i = 0; i < V; i++) {
+            if(dist[i] == 1e3) {
+                dist[i] = -1;
+            }
+        }
+        return dist;
+    }
+};
