@@ -1,0 +1,15 @@
+shortest path algo using min heap and dist array
+we wil be given adj list or we will create one storing its node and weight of them
+init dist array to 1e9 or max
+we want minh for min dist hence that is 1st element and weight is 2nd
+we put dist of src 0
+and push minh with dist 0 and src
+while minh isnt empty
+we get dis, that is distance covered till now and the node
+traversing over adjacent node like in bfs 
+in adj list edgewt is 2nd element and adjacent node is 1st
+if edewt + dis< dist[adjnode] then dist[adjnode]= dis+edgewt
+and we push dist[adjnode] and adjnode in minh
+
+if dist for any elem is 1e9 for cycle cases make it -1
+return dist array
