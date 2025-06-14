@@ -1,0 +1,40 @@
+need for queue only as everything unit distance
+use djistkara but with queue and dist matrix
+
+code:
+class Solution {
+public:
+    int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+        int n= grid.size();
+        queue<pair<int, pair<int,int>>> q;
+        vector<vector<int>> dist(n, vector<int>(n, 1e9));
+        if(grid.size()==1) {
+            if(grid[0][0]==0) return 1;
+            else return -1;
+        }    
+        if(grid[0][0]==1) return -1;
+        dist[0][0]= 0;
+        q.push({1, {0,0}});
+        int delrow[]={-1,-1,-1,0,1,1,1,0};
+        int delcol[]={-1,0,1,1,1,0,-1,-1};
+        while(!q.empty()){
+            auto it= q.front();
+            q.pop();
+            int dis= it.first;
+            int r= it.second.first;
+            int c= it.second.second;
+            for(int i=0;i<8;i++){
+                int nrow= r+ delrow[i];
+                int ncol= c+ delcol[i];
+                if(nrow>=0 && nrow<n && ncol>=0 && ncol<n
+                && grid[nrow][ncol]==0 && dis+1< dist[nrow][ncol]){
+                    dist[nrow][ncol]= dis+1;
+                   
+                    q.push({dis+1, {nrow, ncol}});
+                }
+            }
+        }
+        return dist[n-1][n-1] == 1e9 ? -1 : dist[n-1][n-1];
+
+    }
+};
