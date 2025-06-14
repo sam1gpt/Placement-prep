@@ -1,0 +1,11 @@
+dijkstra with only queue as stops is the thing we are targeting
+if stops>k we continue
+we take dist array
+first we create adj node
+push stops=0, node=src, cost=0 into q
+and dist[src]=0
+while q isnt empty
+we pop front element 
+iterate over adj[node], we adjnode and edgewt as the elements
+if cost+edgewt< dist[adjnode]
+we push it into q and dist[adjnode] as cost+edgewt
