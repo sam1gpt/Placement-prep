@@ -1,0 +1,51 @@
+we will be given a starting node and we have to find min time to reach all nodes
+we have to find time to reach last node that will be min time to reach all nodes
+basically find max dist in dist array
+use minh and dijitskra
+here 1 based indexing hence dist array and adj list declared for n+1 nodes
+do the minh stuff and then
+ int maxTime = 0;
+        for (int i = 1; i <= n; i++) {
+            if (dist[i] == 1e9) return -1;
+            maxTime = max(maxTime, dist[i]);
+        }
+
+        return maxTime;
+
+code:
+class Solution {
+public:
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        vector<int> dist(n+1, 1e9);
+        vector<vector<pair<int,int>>> adj(n+1);
+        for(auto it: times){
+            adj[it[0]].push_back({it[1], it[2]});
+        }
+        // cost, node
+        priority_queue< pair<int,int>,
+        vector<pair<int,int>>,
+        greater<pair<int,int>>> minh;
+        minh.push({0, k});
+        dist[k]=0;
+        while(!minh.empty()){
+            auto [cost,node]= minh.top();
+            minh.pop();
+           
+            for(auto iter: adj[node]){
+                int adjNode= iter.first;
+                int wt= iter.second;
+                if(cost+ wt< dist[adjNode]){
+                    dist[adjNode]= cost+wt;
+                    minh.push({dist[adjNode], adjNode});
+                }
+            }
+        }
+        int maxTime = 0;
+        for (int i = 1; i <= n; i++) {
+            if (dist[i] == 1e9) return -1;
+            maxTime = max(maxTime, dist[i]);
+        }
+
+        return maxTime;
+    }
+};
