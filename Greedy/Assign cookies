@@ -1,0 +1,6 @@
+sort both arrays and keep left and right ptr
+while l< array size
+if size>= greed then
+r++
+oterwise l++
+return r ptr
