@@ -1,0 +1,13 @@
+question is can we return bills, each lemonade costs 5 dollar and we have bills array having 5,10,20 dollars
+keep five and ten variable
+traverse thru array
+if bills[i]==5 five+=1
+else if its ten
+  if five is there decrease five by 1 and increase ten by 1
+  else return false
+else // meaning 20 dollar
+  if ten and five decrease each by 1
+  else if five>=3 decrease by 3
+  else return false
+
+return true
