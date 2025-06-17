@@ -1,0 +1,10 @@
+we use range method
+we use min and max var
+if its opening paranthesis we increase min and max value by 1
+if closing, we decrease both by 1
+else if its asterik meaning we can replace by opening closing or none
+for min we decrease by 1
+for max we increase by 1
+for edge cases we check if min<0 we put min as 0 because we know if val is -1 it has no opening paranthesis before it
+if max<0 return false, as it began with ) meaning no opening before it
+return min==0, meaning if min val is 0 that is there is a case when everything is balanced and o/p is true
