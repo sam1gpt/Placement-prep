@@ -1,0 +1,8 @@
+keep maxind and i cntr and run for loop
+if i> maxind return false
+else maxind= max(maxind, i+arr[i])
+return true
+
+logic is we find maxind that can be reached if we encounter index greater than max its not possible,as how can we arrive here if max is less 
+return false in that case
+else we find maxind and if maxind is  greater than size of array means we can definitely reach the end
