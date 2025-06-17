@@ -1,0 +1,8 @@
+follow the range approach
+keep l, r pointer
+while r< size of array-1 meaning second last ele, meaning from there it will reach end if it exceeds
+we keep farthest var
+run a for loop from l to r
+and farthest= max of farthest and i+nums[i]
+l= r+1 and r= farthest and jumps++
+return jumps, if r reachest end it will surely be in min jumps possible
