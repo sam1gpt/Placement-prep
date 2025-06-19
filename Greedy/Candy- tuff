@@ -1,0 +1,15 @@
+first approach keep 2 arrays one traversing from left and other from right, init leftmost and rightmost to 1
+in left traversal if elem right is greater increase its val from left[i] +=1
+vice versa from right
+find max of left right by running another for loop
+retun sum by suing accumulate or running another for loop
+
+method 2: slope
+init i to 1 while its less than array size
+if elem next to it equal sum++, i++ and continue
+take peak and down var to 1
+while i<n && elem left is smaller increase peak and sum+= peak and i by 1
+similarly if left is greater increase sum== down and sown and i by 1
+if down>peak sum+=down-peak
+
+return sum
