@@ -1,0 +1,5 @@
+divide problem into 3 parts, one which do not overlap completely and are smaller, the ones which dont overlap and are completely larger and the ones who do
+if new intervals start is bigger than any intervals end, that means it is to the left and doesnt overlap at all
+else we check if newIntervals end is greater than or equal to any intervals end that means these overlap and hence we try to find the range
+that is min of intervals and newIntervals start and max of these 2 ends and push it into array
+if start of interval is larger than end of newInterval, these also dont overlap and push the remaining in array
