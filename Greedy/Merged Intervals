@@ -1,0 +1,3 @@
+similiar to insert intervals just sort array first, push starting and iterate thru
+find max of interval end
+and push remaining
