@@ -1,0 +1,5 @@
+we basically sort array based on end time using comparator
+we keep last as end time of first interval and cnt as 1
+if intervals beginning is greater than or equal to end of last we increase cnt and keep last as that intervals end
+subtracting size from cnt gives us the min no of intervals to be removed to get non overlapping intervals
+
