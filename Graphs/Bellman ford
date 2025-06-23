@@ -1,0 +1,8 @@
+to check if graph has negative cycles
+dist[src]=0
+we just have dist array and run condn that dist[u]+wt<dist[v] for n-1 iterations
+we again run for nth iteration and if dist array can still be reduced we return -1 stating that it can still be reduced which isnt possible 
+
+proof why n-1 iter is stated in striver video
+bassically if in the case were edges and wts are sequential it will start from dist[0]=0 and run for all edges 1,2,3,4 and so on from 0 val 1 will be calculated from 1 , 2 will be
+and so on
