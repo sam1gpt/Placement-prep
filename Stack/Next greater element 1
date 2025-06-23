@@ -1,0 +1,7 @@
+stack concept and map- nge
+traverse array from reverse elem -1 as we look right for next greater
+while stack aint empty and elem<= array elem pop
+if stack empty put map elem as -1
+else nge as top elem
+push the elem
+traverse the 1st array and push it into result vector nge[num]
