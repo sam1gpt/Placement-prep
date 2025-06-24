@@ -1,0 +1,52 @@
+find nsr, nsl
+width= nsr- nsl-1 multiply by ht to find area
+find max area
+
+stack pair storing ht, index
+for nsr traverse from right
+while>= pop
+if empty store nsr value as n otherwise top elem and push ht, indx in stack // no reverse as index main
+
+for nsl from left if empty -1
+
+code:
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int n= heights.size();
+        // ht, index
+        stack<pair<int,int>> s;
+        vector<int> nsl(n);
+        vector<int> nsr(n);
+        // nsr
+        for(int i=n-1;i>=0;i--){
+            while(!s.empty() && s.top().first>= heights[i]){
+                s.pop();
+            }
+            nsr[i]= s.empty()? n: s.top().second;
+            s.push({heights[i], i});
+
+        }
+        while(!s.empty()) s.pop();
+
+        //nsl
+        for(int i=0;i<n;i++){
+            while(!s.empty() && s.top().first>= heights[i]){
+                s.pop();
+            }
+            nsl[i]= s.empty()? -1: s.top().second;
+            s.push({heights[i], i});
+
+        }
+        int maxa= 0;
+        for(int i=0;i<n;i++){
+            int width= nsr[i]-nsl[i]-1;
+            int area= heights[i]* width;
+            maxa= max(maxa, area);
+        }
+        return maxa;
+
+        
+
+    }
+};
