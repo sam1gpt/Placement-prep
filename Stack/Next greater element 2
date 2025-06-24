@@ -1,0 +1,3 @@
+stack concept but array is circular, so i doubled the array size
+and iterated from left with a stack and vector of 2*n size
+the ans vector was iterated till n size that is half of vector v giving the desired ans
