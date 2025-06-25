@@ -1,0 +1,3 @@
+compute largest histogram area for each level
+find max area at each level using largest histogram area concept
+use prefix sum and run for loop and find max passing psum as vector for largest histogram area at each leve;
