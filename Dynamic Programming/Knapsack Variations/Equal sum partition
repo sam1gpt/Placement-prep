@@ -1,0 +1,2 @@
+just check if total sum is odd return false
+else pass half the sum value into subset partition problem
