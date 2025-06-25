@@ -1,0 +1,6 @@
+basically have a maximum element for each element from left and right arrays // mxl, mxr
+init left array with height[0] and right with height[n-1]
+run for loop from left and other with right from size-2
+the mxl stores max of previous and current height and vice versa for mxr
+find min of mxl and mxr for each element and subtract the height of that elem gives rainwater stored at that particular element
+add all to give sum
