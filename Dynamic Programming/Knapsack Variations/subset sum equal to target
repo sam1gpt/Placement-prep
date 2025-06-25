@@ -1,0 +1,7 @@
+start from recursive from end and memoize it 2 options take or not take
+check base cond 
+if arr[ind]<= sum
+we can take and reduce sum by that index
+or not take and reduce the index // start from n-1
+return not take or take for that index
+init dp array to n+1,sum+1
