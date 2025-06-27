@@ -1,0 +1,48 @@
+we need to find min diff b/w 2 subsets s1 and s2
+we calculate sum and that is total range of  s1 and s2
+we calculate how many subsets are possible from 0 to totalsum by passing that whether subsets are possible for this
+if the last row shows true for any means subset with that particular sum is possible we calculate s2 by doing range- 2*s1
+we return the minimum after calculating till half of s1 as we want s2>s1
+
+leetcode shows some error but this is only easy way to understand 
+
+code:
+class Solution {
+public:
+     bool f(vector<int>& nums, int target, int index, vector<vector<int>> &dp){
+        if(target==0) return dp[index][target]= true;
+        if(index==0){
+            if(nums[0]== target) return dp[index][target]= true;
+            else return dp[index][target]= false;
+        }
+        if(dp[index][target]!=-1){
+            return dp[index][target];
+        }
+        bool nottake= f(nums, target, index-1, dp);
+        bool take= false;
+        if(nums[index]<= target){
+            take= f(nums, target- nums[index], index-1, dp);
+        }
+        return dp[index][target]= nottake || take;
+    }
+    int minimumDifference(vector<int>& nums) {
+        int n= nums.size();
+        int sum= accumulate(nums.begin(), nums.end(), 0);
+         vector<vector<int>> dp(n, vector<int>(sum + 1, -1));
+
+        for (int i = 0; i <= sum/2; i++) {
+            bool dummy= f(nums, i, n - 1, dp);
+        }
+
+        int mini= 1e9;
+        for(int i=0;i<=sum/2;i++){
+            if(dp[n-1][i]== true){
+                int diff= abs(sum- 2*i);
+                mini= min(mini, diff);
+            }
+        }
+        return mini;
+
+        
+    }
+};
